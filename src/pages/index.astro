@@ -3,10 +3,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<form action="" method="post">
+	<form action="/api/contact" method="post">
 		<div><label>お名前: <input type="text" name="name"></label></div>
 		<div><label>E-mail: <input type="email" name="email"></label></div>
 		<div><label>お問い合わせ内容: <textarea name="message" /></label></div>
+
+		<div><button>送信</button></div>
 	</form>
 </Layout>
 

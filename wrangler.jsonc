@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-contact-form-example",
-	"main": "./dist/_worker.js/index.js",
+	"main": "./dist/worker/index.js",
 	"compatibility_date": "2025-07-03",
 	"compatibility_flags": [
 		"nodejs_compat",
@@ -17,6 +17,30 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	"services": [
+		{
+			"binding": "SEND_EMAIL",
+			"service": "cloudflare-workers-send-email-example",
+			"environment": "production"
+		}
+	],
+
+	"env": {
+		"production": {
+			"services": [
+				{
+					"binding": "SEND_EMAIL",
+					"service": "cloudflare-workers-send-email-example",
+					"environment": "production"
+				}
+			]
+		}
 	}
 	/**
 	 * Smart Placement
@@ -46,10 +70,4 @@
 	 * https://developers.cloudflare.com/workers/static-assets/binding/
 	 */
 	// "assets": { "directory": "./public/", "binding": "ASSETS" },
-
-	/**
-	 * Service Bindings (communicate between multiple Workers)
-	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
-	 */
-	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
 }
