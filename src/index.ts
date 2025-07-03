@@ -11,9 +11,9 @@ async function submitHandler(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const clone = await request.clone();
 
     if (url.pathname === "/api/contact") {
+      const clone = await request.clone();
       const formSubmitResponse = await submitHandler(clone, env);
 
       if (formSubmitResponse.ok) {
@@ -31,6 +31,6 @@ export default {
       }
     }
 
-    return fetch(clone);
+    return fetch(request);
   },
 };
