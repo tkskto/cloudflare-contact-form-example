@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<form action="" method="post">
+		<div><label>お名前: <input type="text" name="name"></label></div>
+		<div><label>E-mail: <input type="email" name="email"></label></div>
+		<div><label>お問い合わせ内容: <textarea name="message" /></label></div>
+	</form>
+</Layout>
+
+<style>
+	form {
+		display: grid;
+		height: 100%;
+		place-content: center;
+	}
+
+	div {
+		padding: 20px;
+	}
+</style>
