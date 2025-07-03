@@ -26,22 +26,10 @@
 	"services": [
 		{
 			"binding": "SEND_EMAIL",
-			"service": "cloudflare-workers-send-email-example",
-			"environment": "production"
+			"service": "cloudflare-workers-send-email-example"
 		}
-	],
+	]
 
-	"env": {
-		"production": {
-			"services": [
-				{
-					"binding": "SEND_EMAIL",
-					"service": "cloudflare-workers-send-email-example",
-					"environment": "production"
-				}
-			]
-		}
-	}
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

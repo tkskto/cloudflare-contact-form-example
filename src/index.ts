@@ -5,18 +5,17 @@ async function submitHandler(request, env) {
     });
   }
 
-  return env.SEND_EMAIL.fetch(request);
+  return env.SEND_EMAIL.fetch(request, env);
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    console.log(env);
-
     if (url.pathname === "/api/contact") {
       await submitHandler(request, env);
     }
-    return new Response("Not found", { status: 404 });
+
+    return fetch(request);
   },
 };
