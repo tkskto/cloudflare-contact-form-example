@@ -14,7 +14,21 @@ export default {
     const clone = await request.clone();
 
     if (url.pathname === "/api/contact") {
-      await submitHandler(clone, env);
+      const formSubmitResponse = await submitHandler(clone, env);
+
+      if (formSubmitResponse.ok) {
+        return Response.redirect('/form/complete.html', 200);
+      } else {
+        return new Response(
+            JSON.stringify({
+              message: 'メールの送信に失敗しました。',
+            }),
+            {
+              status: 500,
+              statusText: 'メールの送信に失敗しました。',
+            },
+        );
+      }
     }
 
     return fetch(clone);
