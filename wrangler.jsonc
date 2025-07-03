@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "contact-form",
+	"name": "cloudflare-contact-form-example",
 	"main": "./dist/_worker.js/index.js",
 	"compatibility_date": "2025-07-03",
 	"compatibility_flags": [
