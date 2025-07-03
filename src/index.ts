@@ -11,11 +11,12 @@ async function submitHandler(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const clone = await request.clone();
 
     if (url.pathname === "/api/contact") {
-      await submitHandler(request, env);
+      await submitHandler(clone, env);
     }
 
-    return fetch(request);
+    return fetch(clone);
   },
 };
