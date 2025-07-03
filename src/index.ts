@@ -17,7 +17,7 @@ export default {
       const formSubmitResponse = await submitHandler(clone, env);
 
       if (formSubmitResponse.ok) {
-        return Response.redirect('/form/complete.html', 302);
+        return Response.redirect(`${url.origin}/form/complete.html`, 302);
       } else {
         return new Response(
             JSON.stringify({
